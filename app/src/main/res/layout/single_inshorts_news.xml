@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/image_ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/inShort_avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/inshorts_news_image"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:id="@+id/news_description_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp">
+
+            <TextView
+                android:id="@+id/news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Punjab Kings dropping Gayle on his birthday makes zero sense: Sunil Gavaskar" />
+
+            <TextView
+                android:id="@+id/news_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="by Tarush Kaistha" />
+
+            <TextView
+                android:id="@+id/news_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="RR's 20-year-old pacer Kartik Tyagi took two wickets and defended four runs off the last over to help his team defeat PBKS by 2 runs in their IPL 2021 encounter. With the victory, RR moved to fifth position on the points table with eight points in eight matches. RR put up a total of 185/10 before restricting PBKS to 183/4." />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
