@@ -6,5 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".InshortsNewsMainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/news_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:itemCount="2"
+        tools:listitem="@layout/single_inshorts_news" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
