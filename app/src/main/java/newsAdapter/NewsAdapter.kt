@@ -1,0 +1,4 @@
+package newsAdapter
+
+class NewsAdapter {
+}
