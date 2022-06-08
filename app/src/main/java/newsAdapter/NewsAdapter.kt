@@ -3,6 +3,7 @@ package newsAdapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.trendinginshortsnews.R
 import newsModel.NewsModel
 import newsViewHolder.NewsViewHolder
@@ -18,7 +19,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-
+        val newsPosition = newsData[position]
+        val activityContext = holder.itemView.context
+        Glide.with(activityContext).load(newsPosition.newsImage).into(holder.newsAvatar)
+        holder.newsTitle.text = newsPosition.newsTitle
+        holder.newsAuthor.text = newsPosition.newsAuthor
+        holder.newsContent.text = newsPosition.newsContent
     }
 
     override fun getItemCount() = newsData.size
