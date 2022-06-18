@@ -5,6 +5,7 @@ import newsModel.NewsModel
 object NewsModelList {
     val newsList = arrayListOf(
         NewsModel(
+            category = "",
             newsImage = "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2021/09_sep/22_wed/img_1632280365719_940.jpg?",
             newsTitle = "PBKS Wins",
             newsAuthor = "Tarusb Kaistha",
@@ -13,6 +14,7 @@ object NewsModelList {
             """.trimIndent()
         ),
         NewsModel(
+            category = "",
             newsImage = "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2021/09_sep/22_wed/img_1632280365719_940.jpg?",
             newsTitle = "PBKS Wins",
             newsAuthor = "Tarusb Kaistha",
@@ -21,6 +23,7 @@ object NewsModelList {
             """.trimIndent()
         ),
         NewsModel(
+            category = "",
             newsImage = "https://static.inshorts.com/inshorts/images/v1/variants/jpg/m/2021/09_sep/22_wed/img_1632280365719_940.jpg?",
             newsTitle = "PBKS Wins",
             newsAuthor = "Tarusb Kaistha",
