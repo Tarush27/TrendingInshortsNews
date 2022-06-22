@@ -1,17 +1,25 @@
 package network
 
-import android.util.Log
 import com.google.gson.annotations.SerializedName
-import constants.NEWS_TAG
+import newsModel.NewsModel
 
 data class NewsResponse(
-    @SerializedName("category") var category: String?,
-    @SerializedName("data") var newsList: ArrayList<NewsData> = arrayListOf()
+    @SerializedName("category") var newsCategory: String?,
+    @SerializedName("data") var newsList: List<NewsData> = listOf()
 ) {
-    fun fetchNews() {
-        for (news in newsList) {
-            Log.d(NEWS_TAG, "news content : $news")
+
+
+    fun returnActualNews(): List<NewsModel> {
+        val newsModelList: List<NewsModel> = newsList.map {
+            NewsModel(
+                category = newsCategory,
+                newsAuthor = it.author,
+                newsContent = it.content,
+                newsImage = it.imageUrl,
+                newsTitle = it.title
+            )
         }
+        return newsModelList
     }
 }
 
