@@ -1,5 +1,6 @@
 package newsAdapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,5 +27,11 @@ class NewsAdapter : RecyclerView.Adapter<NewsViewHolder>() {
         holder.newsContent.text = newsPosition.newsContent
     }
 
+
     override fun getItemCount() = newsData.size
+    fun updateNews(newsModels: ArrayList<NewsModel>?) {
+        newsData.addAll(0, newsModels!!)
+        Log.d("NewsAdapter", "updateNews: ${newsModels.size}")
+        notifyDataSetChanged()
+    }
 }
