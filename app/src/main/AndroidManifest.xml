@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TrendingInshortsNews"
         tools:targetApi="31">
         <activity
-            android:name=".InshortsNewsMainActivity"
+            android:name=".InshortsMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
