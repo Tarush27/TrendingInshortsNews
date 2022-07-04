@@ -1,7 +1,6 @@
 package network
 
 import com.google.gson.annotations.SerializedName
-import newsModel.NewsModel
 
 data class NewsResponse(
     @SerializedName("category") var newsCategory: String?,
@@ -9,18 +8,6 @@ data class NewsResponse(
 ) {
 
 
-    fun returnActualNews(): List<NewsModel> {
-        val newsModelList: List<NewsModel> = newsList.map {
-            NewsModel(
-                category = newsCategory,
-                newsAuthor = it.author,
-                newsContent = it.content,
-                newsImage = it.imageUrl,
-                newsTitle = it.title
-            )
-        }
-        return newsModelList
-    }
 }
 
 data class NewsData(
