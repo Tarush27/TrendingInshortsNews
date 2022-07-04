@@ -6,6 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private val retrofit = Retrofit.Builder()
+        .client(OkHttpLoginInterceptor.okHttpClient)
         .baseUrl(INSHORTS_NEWS_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
