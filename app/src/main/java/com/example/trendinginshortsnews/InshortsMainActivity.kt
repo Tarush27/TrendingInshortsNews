@@ -1,10 +1,11 @@
 package com.example.trendinginshortsnews
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import network.NewsApiService
 import network.NewsData
 import network.NewsResponse
@@ -20,9 +21,17 @@ class InshortsMainActivity : AppCompatActivity() {
     private val newsRecyclerView: RecyclerView
         get() = findViewById(R.id.news_rv)
     private lateinit var newsAdapter: NewsAdapter
+    private val swipeRefreshLayout: SwipeRefreshLayout
+        get() = findViewById(R.id.swipe_refresh_layout)
+    private val swipeRefreshListener = SwipeRefreshLayout.OnRefreshListener {
+        swipeRefreshLayout.isRefreshing = true
+        getNewsContent()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.inshorts_news_main_activity)
+        swipeRefreshLayout.setOnRefreshListener(swipeRefreshListener)
         newsRecyclerView.layoutManager = LinearLayoutManager(this)
         newsAdapter = NewsAdapter()
         newsRecyclerView.adapter = newsAdapter
@@ -34,6 +43,7 @@ class InshortsMainActivity : AppCompatActivity() {
         val fetchNewsByCategory: Call<NewsResponse> = initNewsService.getNews("")
         fetchNewsByCategory.enqueue(object : Callback<NewsResponse> {
             override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
+                swipeRefreshLayout.isRefreshing = false
                 if (response.isSuccessful) {
 
                     val newsResponse: NewsResponse? = response.body()
@@ -49,13 +59,25 @@ class InshortsMainActivity : AppCompatActivity() {
 
                     newsAdapter.updateNews(newsModels as ArrayList<NewsModel>?)
 
+                } else {
+                    createMaterialAlertDialog()
                 }
             }
 
             override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                Log.d("InshortsMainActivity", "onFailure: ${t.message}")
+                swipeRefreshLayout.isRefreshing = false
+                createMaterialAlertDialog()
             }
 
         })
+    }
+
+    private fun createMaterialAlertDialog() {
+        MaterialAlertDialogBuilder(this@InshortsMainActivity)
+            .setMessage("No internet Connection")
+            .setNegativeButton("Dismiss") { _, _ ->
+
+            }
+            .show()
     }
 }
